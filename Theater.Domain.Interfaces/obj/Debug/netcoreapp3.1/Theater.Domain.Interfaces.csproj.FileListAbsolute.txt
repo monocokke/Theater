@@ -1,0 +1,9 @@
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.deps.json
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.csprojAssemblyReference.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.AssemblyInfo.cs
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.pdb
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Domain.Interfaces\obj\Debug\netcoreapp3.1\Theater.Domain.Interfaces.pdb

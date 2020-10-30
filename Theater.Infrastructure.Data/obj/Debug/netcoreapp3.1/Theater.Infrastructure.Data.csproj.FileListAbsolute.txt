@@ -1,0 +1,14 @@
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Infrastructure.Data.deps.json
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Infrastructure.Data.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.csprojAssemblyReference.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.AssemblyInfoInputs.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.AssemblyInfo.cs
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Infrastructure.Data.pdb
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Domain.Core.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Domain.Core.pdb
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.csproj.CopyComplete
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.pdb
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Data.csproj.CoreCompileInputs.cache
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.dll
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Data\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.pdb

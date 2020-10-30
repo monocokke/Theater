@@ -1,0 +1,447 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\TheaterNew\\Theater.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj",
+        "projectName": "Theater.Domain.Core",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\Theater.Domain.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\Theater.Domain.Interfaces.csproj",
+        "projectName": "Theater.Domain.Interfaces",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\Theater.Domain.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\Theater.Infrastructure.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\Theater.Infrastructure.Business.csproj",
+        "projectName": "Theater.Infrastructure.Business",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\Theater.Infrastructure.Business.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj"
+              },
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\Theater.Services.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\Theater.Services.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj",
+        "projectName": "Theater.Infrastructure.Data",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj"
+              },
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\Theater.Domain.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Interfaces\\Theater.Domain.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\Theater.Services.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\Theater.Services.Interfaces.csproj",
+        "projectName": "Theater.Services.Interfaces",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\Theater.Services.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Services.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Polina\\Desktop\\TheaterNew\\TheaterNew\\Theater.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Polina\\Desktop\\TheaterNew\\TheaterNew\\Theater.csproj",
+        "projectName": "Theater",
+        "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\TheaterNew\\Theater.csproj",
+        "packagesPath": "C:\\Users\\Polina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\TheaterNew\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Polina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Domain.Core\\Theater.Domain.Core.csproj"
+              },
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\Theater.Infrastructure.Business.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Business\\Theater.Infrastructure.Business.csproj"
+              },
+              "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj": {
+                "projectPath": "C:\\Users\\Polina\\Desktop\\TheaterNew\\Theater.Infrastructure.Data\\Theater.Infrastructure.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
