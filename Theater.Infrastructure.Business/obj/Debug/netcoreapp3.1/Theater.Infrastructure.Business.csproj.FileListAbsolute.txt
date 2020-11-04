@@ -6,7 +6,6 @@ C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\net
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Infrastructure.Business.pdb
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Business.dll
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Business.pdb
-C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Business.csproj.CoreCompileInputs.cache
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Domain.Core.dll
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.dll
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Infrastructure.Data.dll
@@ -16,3 +15,4 @@ C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\net
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Domain.Core.pdb
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.pdb
 C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Business.csproj.CopyComplete
+C:\Users\Polina\Desktop\TheaterNew\Theater.Infrastructure.Business\obj\Debug\netcoreapp3.1\Theater.Infrastructure.Business.csproj.CoreCompileInputs.cache
