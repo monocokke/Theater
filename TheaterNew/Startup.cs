@@ -79,8 +79,6 @@ namespace TheaterNew
                 c.RoutePrefix = string.Empty;
             });
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthentication();

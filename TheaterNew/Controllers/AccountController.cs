@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Theater.Domain.Core.Models;
 using Theater.Domain.Core.DTO;
+using Theater.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Theater.Controllers
 {
@@ -15,58 +17,35 @@ namespace Theater.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly IUserService _service;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager)
+        public AccountController(IUserService service, ILogger<AccountController> logger)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _signInManager = signInManager;
+            _service = service;
+            _logger = logger;
         }
 
         [Route("/register")]
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
         {
-            if (ModelState.IsValid)
+            _logger.LogInformation("Attempt to register new employee");
+            if (ModelState.IsValid && await _service.Register(userDTO))
             {
-                User user = new User
-                {
-                    Email = userDTO.Email,
-                    UserName = userDTO.Username,
-                    BirthDate = userDTO.BirthDate,
-                    Sex = userDTO.Sex
-                };
-                var result = await _userManager.CreateAsync(user, userDTO.Password);
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);
-                    return Ok(result.Succeeded);
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
+                return Ok();
             }
             return BadRequest();
         }
 
         [Route("/login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] [Bind("Email", "Password")] UserDTO userDTO)
+        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
         {
-            if (ModelState.IsValid)
+            _logger.LogInformation("Attempt to login");
+            if (ModelState.IsValid && await _service.Login(userDTO))
             {
-                var result = await _signInManager.PasswordSignInAsync(userDTO.Email, userDTO.Password, true, false);
-                if (result.Succeeded)
-                {
-                    return Ok(result.Succeeded);
-                }
+                return Ok();
             }
             return BadRequest(HttpContext.Response);
         }
@@ -75,8 +54,8 @@ namespace Theater.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
-            return Ok(true);
+            await _service.Logout();
+            return Ok();
         }
     }
 }
