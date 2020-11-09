@@ -72,10 +72,14 @@ C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.dl
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.pdb
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.genruntimeconfig.cache
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.csproj.CoreCompileInputs.cache
-C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.dll
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Theater.Services.Interfaces.dll
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Theater.Domain.Interfaces.pdb
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Theater.Services.Interfaces.pdb
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityModel.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityServer4.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityServer4.Storage.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.csproj.CoreCompileInputs.cache
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cache
