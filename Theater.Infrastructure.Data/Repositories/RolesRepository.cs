@@ -27,6 +27,11 @@ namespace Theater.Infrastructure.Data.Repositories
             return db.TheaterRoles.Find(id);
         }
 
+        public void Update(Role role)
+        {
+            db.SaveChanges();
+        }
+
         public void Delete(int id)
         {
             Role role = db.TheaterRoles.Find(id);

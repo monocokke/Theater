@@ -42,6 +42,15 @@ namespace Theater.Controllers
             return Ok(_service.GetItem(id));
         }
 
+        [HttpPut]
+        public IActionResult Update([FromBody] Actor actor)
+        {
+            _logger.LogInformation($"Update {actor.Id} actor");
+            if (_service.Update(actor))
+                return Ok();
+            return BadRequest();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

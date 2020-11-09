@@ -29,7 +29,7 @@ namespace Theater.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ActorRole actorRole)
         {
-            _logger.LogInformation($"Get actor's role: {HttpContext.Request.Query}");
+            _logger.LogInformation($"Get actor's role: {actorRole.Id}");
             if (_service.CreateItem(actorRole))
                 return Ok();
             return BadRequest();
@@ -40,6 +40,15 @@ namespace Theater.Controllers
         {
             _logger.LogInformation($"Get actor's role by id: {id}");
             return Ok(_service.GetItem(id));
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] ActorRole actorRole)
+        {
+            _logger.LogInformation($"Update {actorRole.Id} actor's role");
+            if (_service.Update(actorRole))
+                return Ok();
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]

@@ -54,6 +54,7 @@ namespace Theater.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
+            _logger.LogInformation("User logout");
             await _service.Logout();
             return Ok();
         }

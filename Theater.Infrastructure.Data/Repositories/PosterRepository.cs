@@ -27,6 +27,11 @@ namespace Theater.Infrastructure.Data.Repositories
             return db.Posters.Find(id);
         }
 
+        public void Update(Poster poster)
+        {
+            db.SaveChanges();
+        }
+
         public void Delete(int id)
         {
             Poster poster = db.Posters.Find(id);

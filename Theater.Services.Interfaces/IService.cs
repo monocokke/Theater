@@ -12,6 +12,8 @@ namespace Theater.Services.Interfaces
 
         IEnumerable<T> GetItems();
 
+        bool Update(T item);
+
         bool Delete(int id);
     }
 }

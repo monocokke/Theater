@@ -8,7 +8,9 @@ namespace Theater.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ActorRole> builder)
         {
-            builder.HasKey(p => new { p.ActorId, p.RoleId });
+            builder.HasKey(p => p.Id);
+
+            builder.HasAlternateKey(p => new { p.ActorId, p.RoleId });
 
             builder.Property(p => p.Understudy).
                 IsRequired();

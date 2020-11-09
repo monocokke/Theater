@@ -29,6 +29,18 @@ namespace Theater.Infrastructure.Business.Services
             return performances.GetList();
         }
 
+        public bool Update(Performance performance)
+        {
+            var edited = performances.Get(performance.Id);
+            if (edited == null)
+                return false;
+            if(performance.Name != null) { edited.Name = performance.Name; }
+            if(performance.Genre != null) { edited.Genre = performance.Genre; }
+            if(performance.Audience != null) { edited.Audience = performance.Audience; }
+            performances.Update(performance);
+            return true;
+        }
+
         public bool Delete(int id)
         {
             performances.Delete(id);
