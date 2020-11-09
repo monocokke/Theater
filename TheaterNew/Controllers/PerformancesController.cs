@@ -29,7 +29,7 @@ namespace Theater.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Performance performance)
         {
-            _logger.LogInformation($"Get performance: {HttpContext.Request.Query}");
+            _logger.LogInformation($"Create performance");
             if (_service.CreateItem(performance))
                 return Ok();
             return BadRequest();
@@ -40,6 +40,15 @@ namespace Theater.Controllers
         {
             _logger.LogInformation($"Get performance by id: {id}");
             return Ok(_service.GetItem(id));
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] Performance performance)
+        {
+            _logger.LogInformation($"Update {performance.Id} performance");
+            if(_service.Update(performance))
+                return Ok();
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]

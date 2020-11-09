@@ -29,6 +29,19 @@ namespace Theater.Infrastructure.Business.Services
             return actors.GetList();
         }
 
+        public bool Update(Actor actor)
+        {
+            var edited = actors.Get(actor.Id);
+            if (edited == null)
+                return false;
+            if (actor.EyeColor != null) { edited.EyeColor = actor.EyeColor; }
+            if (actor.HairColor != null) { edited.HairColor = actor.HairColor; }
+            if (actor.Nationality != null) { edited.Nationality = actor.Nationality; }
+            if (actor.Height != null) { edited.Height = actor.Height; }
+            actors.Update(actor);
+            return true;
+        }
+
         public bool Delete(int id)
         {
             actors.Delete(id);

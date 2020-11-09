@@ -42,6 +42,15 @@ namespace Theater.Controllers
             return Ok(_service.GetItem(id));
         }
 
+        [HttpPut]
+        public IActionResult Update([FromBody] Poster poster)
+        {
+            _logger.LogInformation($"Update {poster.Id} poster");
+            if (_service.Update(poster))
+                return Ok();
+            return BadRequest();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

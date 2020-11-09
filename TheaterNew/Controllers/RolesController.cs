@@ -42,6 +42,15 @@ namespace Theater.Controllers
             return Ok(_service.GetItem(id));
         }
 
+        [HttpPut]
+        public IActionResult Update([FromBody] Role role)
+        {
+            _logger.LogInformation($"Update {role.Id} role");
+            if (_service.Update(role))
+                return Ok();
+            return BadRequest();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

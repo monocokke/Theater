@@ -31,6 +31,18 @@ namespace Theater.Infrastructure.Business.Services
             return actorRoles.GetList();
         }
 
+        public bool Update(ActorRole actorRole)
+        {
+            var edited = actorRoles.Get(actorRole.Id);
+            if (edited == null)
+                return false;
+            if (actorRole.ActorId != null) { edited.ActorId = actorRole.ActorId; }
+            if (actorRole.RoleId != null) { edited.RoleId = actorRole.RoleId; }
+            if (actorRole.Understudy != null) { edited.Understudy = actorRole.Understudy; }
+            actorRoles.Update(actorRole);
+            return true;
+        }
+
         public bool Delete(int id)
         {
             actorRoles.Delete(id);

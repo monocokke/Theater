@@ -29,6 +29,17 @@ namespace Theater.Infrastructure.Business.Services
             return posters.GetList();
         }
 
+        public bool Update(Poster poster)
+        {
+            var edited = posters.Get(poster.Id);
+            if (edited == null)
+                return false;
+            if (poster.DateTime != null) { edited.DateTime = poster.DateTime; }
+            if (poster.Premiere != null) { edited.Premiere = poster.Premiere; }
+            posters.Update(poster);
+            return true;
+        }
+
         public bool Delete(int id)
         {
             posters.Delete(id);

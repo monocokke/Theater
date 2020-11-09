@@ -29,12 +29,19 @@ namespace Theater.Infrastructure.Data.Repositories
             return db.ActorRoles.Find(id);
         }
 
+        public void Update(ActorRole actorRole)
+        {
+            db.SaveChanges();
+        }
+
         public void Delete(int id)
         {
             ActorRole actorRole = db.ActorRoles.Find(id);
             if (actorRole != null)
+            {
                 db.ActorRoles.Remove(actorRole);
-            db.SaveChanges();
+                db.SaveChanges();
+            }
         }
     }
 }

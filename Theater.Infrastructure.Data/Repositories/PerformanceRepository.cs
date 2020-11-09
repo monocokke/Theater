@@ -29,12 +29,19 @@ namespace Theater.Infrastructure.Data.Repositories
             return db.Performances.Find(id);
         }
 
+        public void Update(Performance performance)
+        {
+            db.SaveChanges();
+        }
+
         public void Delete(int id)
         {
             Performance performance = db.Performances.Find(id);
             if (performance != null)
+            {
                 db.Performances.Remove(performance);
-            db.SaveChanges();
+                db.SaveChanges();
+            }
         }
     }
 }
