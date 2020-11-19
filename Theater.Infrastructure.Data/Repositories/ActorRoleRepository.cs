@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 
 namespace Theater.Infrastructure.Data.Repositories
@@ -39,7 +39,7 @@ namespace Theater.Infrastructure.Data.Repositories
             ActorRole actorRole = db.ActorRoles.Find(id);
             if (actorRole != null)
             {
-                db.ActorRoles.Remove(actorRole);
+                db.ActorRoles.Remove(db.ActorRoles.Find(id));
                 db.SaveChanges();
             }
         }

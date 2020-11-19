@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Theater.Domain.Core.Models
+namespace Theater.Domain.Core.DTO
 {
-    public class Poster
+    public class PosterDTO
     {
         public int Id { get; set; }
         public DateTime? DateTime { get; set; }
         public bool? Premiere { get; set; }
-
         public int PerformanceId { get; set; }
-        public Performance Performance { get; set; }
     }
 }

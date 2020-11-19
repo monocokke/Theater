@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Core.DTO;
 using Theater.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using Theater.Domain.Core.Models.User.Account;
 
 namespace Theater.Controllers
 {
@@ -19,19 +21,21 @@ namespace Theater.Controllers
     {
         private readonly IUserService _service;
         private readonly ILogger<AccountController> _logger;
+        private readonly IMapper _mapper;
 
-        public AccountController(IUserService service, ILogger<AccountController> logger)
+        public AccountController(IUserService service, ILogger<AccountController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [Route("/register")]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Register([FromBody] RegisterUserModel model)
         {
             _logger.LogInformation("Attempt to register new employee");
-            if (ModelState.IsValid && await _service.Register(userDTO))
+            if (ModelState.IsValid && await _service.Register(_mapper.Map<UserDTO>(model)))
             {
                 return Ok();
             }
@@ -40,10 +44,10 @@ namespace Theater.Controllers
 
         [Route("/login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Login([FromBody] RegisterUserModel model)
         {
             _logger.LogInformation("Attempt to login");
-            if (ModelState.IsValid && await _service.Login(userDTO))
+            if (ModelState.IsValid && await _service.Login(_mapper.Map<UserDTO>(model)))
             {
                 return Ok();
             }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 
 namespace Theater.Infrastructure.Data.Configurations
 {
@@ -16,6 +16,9 @@ namespace Theater.Infrastructure.Data.Configurations
 
             builder.Property(p => p.Genre).
                 IsRequired().
+                HasMaxLength(20);
+
+            builder.Property(p => p.Audience).
                 HasMaxLength(20);
         }
     }

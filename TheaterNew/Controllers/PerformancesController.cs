@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Theater.Domain.Core.Models;
+using System.Collections.Generic;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Entities;
 using Theater.Services.Interfaces;
+using Theater.Domain.Core.Models.Performance;
 
 namespace Theater.Controllers
 {
@@ -10,13 +14,15 @@ namespace Theater.Controllers
     [ApiController]
     public class PerformancesController : ControllerBase
     {
-        private readonly IService<Performance> _service;
+        private readonly IService<PerformanceDTO> _service;
         private readonly ILogger<PerformancesController> _logger;
+        private readonly IMapper _mapper;
 
-        public PerformancesController(IService<Performance> service, ILogger<PerformancesController> logger)
+        public PerformancesController(IService<PerformanceDTO> service, ILogger<PerformancesController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -27,11 +33,14 @@ namespace Theater.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Performance performance)
+        public IActionResult Post([FromBody] CreatePerformanceModel model)
         {
             _logger.LogInformation($"Create performance");
-            if (_service.CreateItem(performance))
-                return Ok();
+            if (ModelState.IsValid)
+            {
+                if (_service.CreateItem(_mapper.Map<PerformanceDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 
@@ -43,11 +52,14 @@ namespace Theater.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Performance performance)
+        public IActionResult Update([FromBody] UpdatePerformanceModel model)
         {
-            _logger.LogInformation($"Update {performance.Id} performance");
-            if(_service.Update(performance))
-                return Ok();
+            _logger.LogInformation($"Update {model.Id} performance");
+            if (ModelState.IsValid)
+            {
+                if (_service.Update(_mapper.Map<PerformanceDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 

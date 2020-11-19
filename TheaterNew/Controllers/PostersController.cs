@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Services.Interfaces;
+using System.Collections.Generic;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Models.Poster;
 
 namespace Theater.Controllers
 {
@@ -10,13 +14,15 @@ namespace Theater.Controllers
     [ApiController]
     public class PostersController : ControllerBase
     {
-        private readonly IService<Poster> _service;
+        private readonly IService<PosterDTO> _service;
         private readonly ILogger<PostersController> _logger;
+        private readonly IMapper _mapper;
 
-        public PostersController(IService<Poster> service, ILogger<PostersController> logger)
+        public PostersController(IService<PosterDTO> service, ILogger<PostersController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -27,11 +33,14 @@ namespace Theater.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Poster poster)
+        public IActionResult Post([FromBody] CreatePosterModel model)
         {
             _logger.LogInformation($"Get poster: {HttpContext.Request.Query}");
-            if (_service.CreateItem(poster))
-                return Ok();
+            if (ModelState.IsValid)
+            {
+                if (_service.CreateItem(_mapper.Map<PosterDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 
@@ -43,11 +52,14 @@ namespace Theater.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Poster poster)
+        public IActionResult Update([FromBody] UpdatePosterModel model)
         {
-            _logger.LogInformation($"Update {poster.Id} poster");
-            if (_service.Update(poster))
-                return Ok();
+            _logger.LogInformation($"Update {model.Id} poster");
+            if (ModelState.IsValid)
+            {
+                if (_service.Update(_mapper.Map<PosterDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 

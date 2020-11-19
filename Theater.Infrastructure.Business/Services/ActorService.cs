@@ -1,50 +1,57 @@
-﻿using System.Collections.Generic;
-using Theater.Domain.Core.Models;
+﻿using AutoMapper;
+using System.Collections.Generic;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 using Theater.Services.Interfaces;
 
 namespace Theater.Infrastructure.Business.Services
 {
-    public class ActorService : IService<Actor>
+    public class ActorService : IService<ActorDTO>
     {
-        private readonly IRepository<Actor> actors;
+        private readonly IRepository<Actor> _actors;
+        private readonly IMapper _mapper;
 
-        public ActorService(IRepository<Actor> actorRepository)
+        public ActorService(IRepository<Actor> actorRepository, IMapper mapper)
         {
-            actors = actorRepository;
+            _actors = actorRepository;
+            _mapper = mapper;
         }
-        public bool CreateItem(Actor actor)
+        public bool CreateItem(ActorDTO actorDTO)
         {
-            actors.Create(actor);
+            _actors.Create(_mapper.Map<Actor>(actorDTO));
             return true;
         }
 
-        public Actor GetItem(int id)
+        public ActorDTO GetItem(int id)
         {
-            return actors.Get(id);
+            return _mapper.Map<ActorDTO>(_actors.Get(id));
         }
 
-        public IEnumerable<Actor> GetItems()
+        public IEnumerable<ActorDTO> GetItems()
         {
-            return actors.GetList();
+            return _mapper.Map<IEnumerable<ActorDTO>>(_actors.GetList());
         }
 
-        public bool Update(Actor actor)
+        public bool Update(ActorDTO actorDTO)
         {
-            var edited = actors.Get(actor.Id);
+            var edited = _actors.Get(actorDTO.Id);
             if (edited == null)
                 return false;
-            if (actor.EyeColor != null) { edited.EyeColor = actor.EyeColor; }
-            if (actor.HairColor != null) { edited.HairColor = actor.HairColor; }
-            if (actor.Nationality != null) { edited.Nationality = actor.Nationality; }
-            if (actor.Height != null) { edited.Height = actor.Height; }
-            actors.Update(actor);
+            if (actorDTO.EyeColor != null) { edited.EyeColor = actorDTO.EyeColor; }
+            if (actorDTO.HairColor != null) { edited.HairColor = actorDTO.HairColor; }
+            if (actorDTO.Nationality != null) { edited.Nationality = actorDTO.Nationality; }
+            if (actorDTO.Height != null) { edited.Height = actorDTO.Height; }
+            _actors.Update(_mapper.Map<Actor>(actorDTO));
             return true;
         }
 
         public bool Delete(int id)
         {
-            actors.Delete(id);
+            if (id > 0 && _actors.Get(id) != null)
+            {
+                _actors.Delete(id);
+            }
             return true;
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 
 namespace Theater.Infrastructure.Data.Configurations
 {
@@ -17,6 +17,21 @@ namespace Theater.Infrastructure.Data.Configurations
             builder.Property(p => p.Sex).
                 IsRequired().
                 HasMaxLength(6);
+
+            builder.Property(p => p.Description).
+                HasMaxLength(1000);
+
+            builder.Property(p => p.PerformanceId).
+                IsRequired();
+
+            builder.Property(p => p.EyeColor).
+                HasMaxLength(10);
+
+            builder.Property(p => p.HairColor).
+                HasMaxLength(10);
+
+            builder.Property(p => p.Nationality).
+                HasMaxLength(10);
         }
     }
 }

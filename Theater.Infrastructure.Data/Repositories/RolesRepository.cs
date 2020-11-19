@@ -1,5 +1,5 @@
 ﻿using Theater.Domain.Interfaces;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using System.Collections.Generic;
 
 namespace Theater.Infrastructure.Data.Repositories
@@ -34,9 +34,7 @@ namespace Theater.Infrastructure.Data.Repositories
 
         public void Delete(int id)
         {
-            Role role = db.TheaterRoles.Find(id);
-            if (role != null)
-                db.TheaterRoles.Remove(role);
+            db.TheaterRoles.Remove(db.TheaterRoles.Find(id));
             db.SaveChanges();
         }
     }

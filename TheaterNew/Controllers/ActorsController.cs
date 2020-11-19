@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Theater.Domain.Core.Models;
+using System.Collections.Generic;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Entities;
 using Theater.Services.Interfaces;
+using Theater.Domain.Core.Models.Actor;
 
 namespace Theater.Controllers
 {
@@ -10,13 +14,15 @@ namespace Theater.Controllers
     [ApiController]
     public class ActorsController : ControllerBase
     {
-        private readonly IService<Actor> _service;
+        private readonly IService<ActorDTO> _service;
         private readonly ILogger<ActorsController> _logger;
+        private readonly IMapper _mapper;
 
-        public ActorsController(IService<Actor> service, ILogger<ActorsController> logger)
+        public ActorsController(IService<ActorDTO> service, ILogger<ActorsController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -27,11 +33,14 @@ namespace Theater.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Actor actor)
+        public IActionResult Post([FromBody] CreateActorModel model)
         {
-            _logger.LogInformation($"Get actor: {HttpContext.Request.Query}");
-            if (_service.CreateItem(actor))
-                return Ok();
+            _logger.LogInformation($"Create actor");
+            if (ModelState.IsValid)
+            {
+                if (_service.CreateItem(_mapper.Map<ActorDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 
@@ -43,11 +52,14 @@ namespace Theater.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Actor actor)
+        public IActionResult Update([FromBody] UpdateActorModel model)
         {
-            _logger.LogInformation($"Update {actor.Id} actor");
-            if (_service.Update(actor))
-                return Ok();
+            _logger.LogInformation($"Update {model.Id} actor");
+            if (ModelState.IsValid)
+            {
+                if (_service.Update(_mapper.Map<ActorDTO>(model)))
+                    return Ok();
+            }
             return BadRequest();
         }
 

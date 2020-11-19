@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 
 namespace Theater.Infrastructure.Data.Repositories
@@ -14,11 +14,13 @@ namespace Theater.Infrastructure.Data.Repositories
         {
             db = context;
         }
+
         public void Create(Performance performance)
         {
             db.Performances.Add(performance);
             db.SaveChanges();
         }
+
         public IEnumerable<Performance> GetList()
         {
             return db.Performances;
@@ -36,12 +38,8 @@ namespace Theater.Infrastructure.Data.Repositories
 
         public void Delete(int id)
         {
-            Performance performance = db.Performances.Find(id);
-            if (performance != null)
-            {
-                db.Performances.Remove(performance);
-                db.SaveChanges();
-            }
+            db.Performances.Remove(db.Performances.Find(id));
+            db.SaveChanges();
         }
     }
 }
