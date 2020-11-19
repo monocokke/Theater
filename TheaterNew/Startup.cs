@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,12 +13,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 using Theater.Infrastructure.Business.Services;
 using Theater.Infrastructure.Data;
 using Theater.Infrastructure.Data.Repositories;
+using Theater.Mappings;
 using Theater.Services.Interfaces;
+using Theater.Domain.Core.DTO;
 
 namespace TheaterNew
 {
@@ -43,6 +46,7 @@ namespace TheaterNew
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
+                options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<TheaterContext>();
 
             services.AddControllers();
@@ -54,11 +58,19 @@ namespace TheaterNew
             services.AddTransient<IRepository<Role>, RolesRepository>();
 
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IService<Actor>, ActorService>();
-            services.AddTransient<IService<ActorRole>, ActorRoleService>();
-            services.AddTransient<IService<Performance>, PerformanceService>();
-            services.AddTransient<IService<Poster>, PosterService>();
-            services.AddTransient<IService<Role>, RoleService>();
+            services.AddTransient<IService<ActorDTO>, ActorService>();
+            services.AddTransient<IService<ActorRoleDTO>, ActorRoleService>();
+            services.AddTransient<IService<PerformanceDTO>, PerformanceService>();
+            services.AddTransient<IService<PosterDTO>, PosterService>();
+            services.AddTransient<IService<RoleDTO>, RoleService>();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddSwaggerGen();
         }

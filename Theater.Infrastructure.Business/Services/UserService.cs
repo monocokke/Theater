@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Theater.Domain.Core.DTO;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Services.Interfaces;
 
 namespace Theater.Infrastructure.Business.Services

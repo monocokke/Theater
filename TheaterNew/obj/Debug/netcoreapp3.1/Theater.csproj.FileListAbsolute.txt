@@ -1,6 +1,5 @@
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Theater.exe
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.csprojAssemblyReference.cache
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.AssemblyInfoInputs.cache
@@ -80,6 +79,9 @@ C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityMo
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityServer4.dll
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\IdentityServer4.Storage.dll
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.csproj.CoreCompileInputs.cache
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\Theater.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Polina\Desktop\TheaterNew\TheaterNew\obj\Debug\netcoreapp3.1\scopedcss\bundle\Theater.styles.css

@@ -1,51 +1,58 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 using Theater.Services.Interfaces;
 
 namespace Theater.Infrastructure.Business.Services
 {
-    public class ActorRoleService : IService<ActorRole>
+    public class ActorRoleService : IService<ActorRoleDTO>
     {
-        private readonly IRepository<ActorRole> actorRoles;
+        private readonly IRepository<ActorRole> _actorRoles;
+        private readonly IMapper _mapper;
 
-        public ActorRoleService(IRepository<ActorRole> actorRoleRepository)
+        public ActorRoleService(IRepository<ActorRole> actorRoleRepository, IMapper mapper)
         {
-            actorRoles = actorRoleRepository;
+            _actorRoles = actorRoleRepository;
+            _mapper = mapper;
         }
-        public bool CreateItem(ActorRole actorRole)
+        public bool CreateItem(ActorRoleDTO actorRoleDTO)
         {
-            actorRoles.Create(actorRole);
+            _actorRoles.Create(_mapper.Map<ActorRole>(actorRoleDTO));
             return true;
         }
 
-        public ActorRole GetItem(int id)
+        public ActorRoleDTO GetItem(int id)
         {
-            return actorRoles.Get(id);
+            return _mapper.Map<ActorRoleDTO>(_actorRoles.Get(id));
         }
 
-        public IEnumerable<ActorRole> GetItems()
+        public IEnumerable<ActorRoleDTO> GetItems()
         {
-            return actorRoles.GetList();
+            return _mapper.Map<IEnumerable<ActorRoleDTO>>(_actorRoles.GetList());
         }
 
-        public bool Update(ActorRole actorRole)
+        public bool Update(ActorRoleDTO actorRoleDTO)
         {
-            var edited = actorRoles.Get(actorRole.Id);
+            var edited = _actorRoles.Get(actorRoleDTO.Id);
             if (edited == null)
                 return false;
-            if (actorRole.ActorId != null) { edited.ActorId = actorRole.ActorId; }
-            if (actorRole.RoleId != null) { edited.RoleId = actorRole.RoleId; }
-            if (actorRole.Understudy != null) { edited.Understudy = actorRole.Understudy; }
-            actorRoles.Update(actorRole);
+            if (actorRoleDTO.ActorId != null) { edited.ActorId = actorRoleDTO.ActorId; }
+            if (actorRoleDTO.RoleId != null) { edited.RoleId = actorRoleDTO.RoleId; }
+            if (actorRoleDTO.Understudy != null) { edited.Understudy = actorRoleDTO.Understudy; }
+            _actorRoles.Update(_mapper.Map<ActorRole>(actorRoleDTO));
             return true;
         }
 
         public bool Delete(int id)
         {
-            actorRoles.Delete(id);
+            if (id > 0 && _actorRoles.Get(id) != null)
+            {
+                _actorRoles.Delete(id);
+            }
             return true;
         }
     }

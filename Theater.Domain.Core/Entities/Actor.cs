@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Theater.Domain.Core.Models
+namespace Theater.Domain.Core.Entities
 {
     public class Actor
     {

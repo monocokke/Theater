@@ -150,7 +150,7 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Actor", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Actor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -188,20 +188,23 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.ActorRole", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.ActorRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ActorId")
+                    b.Property<int?>("ActorId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int?>("RoleId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Understudy")
+                    b.Property<bool?>("Understudy")
+                        .IsRequired()
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -213,7 +216,7 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("ActorRoles");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Performance", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Performance", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -221,7 +224,8 @@ namespace Theater.Infrastructure.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Audience")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Genre")
                         .IsRequired()
@@ -238,7 +242,7 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("Performances");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Poster", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Poster", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -263,7 +267,7 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("Posters");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Role", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,11 +277,17 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
+
                     b.Property<string>("EyeColor")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("HairColor")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int?>("Height")
                         .HasColumnType("int");
@@ -288,9 +298,11 @@ namespace Theater.Infrastructure.Data.Migrations
                         .HasMaxLength(30);
 
                     b.Property<string>("Nationality")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int?>("PerformanceId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Sex")
@@ -305,7 +317,7 @@ namespace Theater.Infrastructure.Data.Migrations
                     b.ToTable("TheaterRoles");
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.User", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -387,7 +399,7 @@ namespace Theater.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.User", null)
+                    b.HasOne("Theater.Domain.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -396,7 +408,7 @@ namespace Theater.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.User", null)
+                    b.HasOne("Theater.Domain.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -411,7 +423,7 @@ namespace Theater.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Theater.Domain.Core.Models.User", null)
+                    b.HasOne("Theater.Domain.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -420,51 +432,53 @@ namespace Theater.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.User", null)
+                    b.HasOne("Theater.Domain.Core.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Actor", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Actor", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.User", "User")
+                    b.HasOne("Theater.Domain.Core.Entities.User", "User")
                         .WithOne("Actor")
-                        .HasForeignKey("Theater.Domain.Core.Models.Actor", "UserId")
+                        .HasForeignKey("Theater.Domain.Core.Entities.Actor", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.ActorRole", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.ActorRole", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.Actor", "Actor")
+                    b.HasOne("Theater.Domain.Core.Entities.Actor", "Actor")
                         .WithMany("ActorRoles")
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Theater.Domain.Core.Models.Role", "Role")
+                    b.HasOne("Theater.Domain.Core.Entities.Role", "Role")
                         .WithMany("ActorRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Poster", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Poster", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.Performance", "Performance")
+                    b.HasOne("Theater.Domain.Core.Entities.Performance", "Performance")
                         .WithMany()
                         .HasForeignKey("PerformanceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Theater.Domain.Core.Models.Role", b =>
+            modelBuilder.Entity("Theater.Domain.Core.Entities.Role", b =>
                 {
-                    b.HasOne("Theater.Domain.Core.Models.Performance", "Performance")
+                    b.HasOne("Theater.Domain.Core.Entities.Performance", "Performance")
                         .WithMany("Roles")
-                        .HasForeignKey("PerformanceId");
+                        .HasForeignKey("PerformanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
