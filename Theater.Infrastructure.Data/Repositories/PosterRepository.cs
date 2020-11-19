@@ -1,5 +1,5 @@
 ﻿using Theater.Domain.Interfaces;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using System.Collections.Generic;
 
 namespace Theater.Infrastructure.Data.Repositories
@@ -34,9 +34,7 @@ namespace Theater.Infrastructure.Data.Repositories
 
         public void Delete(int id)
         {
-            Poster poster = db.Posters.Find(id);
-            if (poster != null)
-                db.Posters.Remove(poster);
+            db.Posters.Remove(db.Posters.Find(id));
             db.SaveChanges();
         }
     }

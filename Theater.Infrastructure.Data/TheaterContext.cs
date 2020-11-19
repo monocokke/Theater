@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Infrastructure.Data.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 

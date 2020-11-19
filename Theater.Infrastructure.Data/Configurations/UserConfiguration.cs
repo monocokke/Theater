@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 
 namespace Theater.Infrastructure.Data.Configurations
 {

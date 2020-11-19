@@ -1,48 +1,55 @@
 ﻿using System.Collections.Generic;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.DTO;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 using Theater.Services.Interfaces;
+using AutoMapper;
 
 namespace Theater.Infrastructure.Business.Services
 {
-    public class PosterService : IService<Poster>
+    public class PosterService : IService<PosterDTO>
     {
-        private readonly IRepository<Poster> posters;
+        private readonly IRepository<Poster> _posters;
+        private readonly IMapper _mapper;
 
-        public PosterService(IRepository<Poster> posterRepository)
+        public PosterService(IRepository<Poster> posterRepository, IMapper mapper)
         {
-            posters = posterRepository;
+            _posters = posterRepository;
+            _mapper = mapper;
         }
-        public bool CreateItem(Poster poster)
+        public bool CreateItem(PosterDTO posterDTO)
         {
-            posters.Create(poster);
+            _posters.Create(_mapper.Map<Poster>(posterDTO));
             return true;
         }
 
-        public Poster GetItem(int id)
+        public PosterDTO GetItem(int id)
         {
-            return posters.Get(id);
+            return _mapper.Map<PosterDTO>(_posters.Get(id));
         }
 
-        public IEnumerable<Poster> GetItems()
+        public IEnumerable<PosterDTO> GetItems()
         {
-            return posters.GetList();
+            return _mapper.Map<IEnumerable<PosterDTO>>(_posters.GetList());
         }
 
-        public bool Update(Poster poster)
+        public bool Update(PosterDTO posterDTO)
         {
-            var edited = posters.Get(poster.Id);
+            var edited = _posters.Get(posterDTO.Id);
             if (edited == null)
                 return false;
-            if (poster.DateTime != null) { edited.DateTime = poster.DateTime; }
-            if (poster.Premiere != null) { edited.Premiere = poster.Premiere; }
-            posters.Update(poster);
+            if (posterDTO.DateTime != null) { edited.DateTime = posterDTO.DateTime; }
+            if (posterDTO.Premiere != null) { edited.Premiere = posterDTO.Premiere; }
+            _posters.Update(_mapper.Map<Poster>(posterDTO));
             return true;
         }
 
         public bool Delete(int id)
         {
-            posters.Delete(id);
+            if (id > 0 && _posters.Get(id) != null)
+            {
+                _posters.Delete(id);
+            }
             return true;
         }
     }

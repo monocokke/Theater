@@ -1,49 +1,56 @@
 ﻿using System.Collections.Generic;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Interfaces;
 using Theater.Services.Interfaces;
+using Theater.Domain.Core.DTO;
+using AutoMapper;
 
 namespace Theater.Infrastructure.Business.Services
 {
-    public class PerformanceService : IService<Performance>
+    public class PerformanceService : IService<PerformanceDTO>
     {
-        private readonly IRepository<Performance> performances;
+        private readonly IRepository<Performance> _performances;
+        private readonly IMapper _mapper;
 
-        public PerformanceService(IRepository<Performance> performanceRepository)
+        public PerformanceService(IRepository<Performance> performanceRepository, IMapper mapper)
         {
-            performances = performanceRepository;
+            _performances = performanceRepository;
+            _mapper = mapper;
         }
-        public bool CreateItem(Performance performance)
-        {
-            performances.Create(performance);
+        public bool CreateItem(PerformanceDTO performanceDTO)
+        {            
+            _performances.Create(_mapper.Map<Performance>(performanceDTO));
             return true;
         }
 
-        public Performance GetItem(int id)
+        public PerformanceDTO GetItem(int id)
         {
-            return performances.Get(id);
+            return _mapper.Map<PerformanceDTO>(_performances.Get(id));
         }
 
-        public IEnumerable<Performance> GetItems()
+        public IEnumerable<PerformanceDTO> GetItems()
         {
-            return performances.GetList();
+            return _mapper.Map<IEnumerable<PerformanceDTO>>(_performances.GetList());
         }
 
-        public bool Update(Performance performance)
+        public bool Update(PerformanceDTO performanceDTO)
         {
-            var edited = performances.Get(performance.Id);
+            var edited = _performances.Get(performanceDTO.Id);
             if (edited == null)
                 return false;
-            if(performance.Name != null) { edited.Name = performance.Name; }
-            if(performance.Genre != null) { edited.Genre = performance.Genre; }
-            if(performance.Audience != null) { edited.Audience = performance.Audience; }
-            performances.Update(performance);
+            if(performanceDTO.Name != null) { edited.Name = performanceDTO.Name; }
+            if(performanceDTO.Genre != null) { edited.Genre = performanceDTO.Genre; }
+            if(performanceDTO.Audience != null) { edited.Audience = performanceDTO.Audience; }
+            _performances.Update(_mapper.Map<Performance>(performanceDTO));
             return true;
         }
 
         public bool Delete(int id)
         {
-            performances.Delete(id);
+            if (id > 0 && _performances.Get(id) != null)
+            {
+                _performances.Delete(id);
+            }
             return true;
         }
     }

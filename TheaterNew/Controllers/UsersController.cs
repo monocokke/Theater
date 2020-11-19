@@ -6,36 +6,40 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Theater.Domain.Core.Models;
+using Theater.Domain.Core.Entities;
 using Theater.Domain.Core.DTO;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Theater.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Route("api/users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly ILogger<UsersController> _logger;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<User> _signInManager;
 
-        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager)
+        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, ILogger<UsersController> logger)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _signInManager = signInManager;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return new ObjectResult(await _userManager.Users.ToListAsync());
+            _logger.LogInformation("Get all users (for admins)");
+            return Ok(await _userManager.Users.ToListAsync());
         }
 
-        [Route("/create")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserDTO userDTO)
         {
+            _logger.LogInformation("Create user (for admins)");
             if (ModelState.IsValid)
             {
                 User user = new User
@@ -48,6 +52,18 @@ namespace Theater.Controllers
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
                 if (result.Succeeded)
                 {
+                    var userRole = await _roleManager.FindByNameAsync(userDTO.Role);
+
+                    if (userRole == null)
+                    {
+                        var roleResult = await _roleManager.CreateAsync(new IdentityRole(userDTO.Role));
+                        if (roleResult.Succeeded)
+                        {
+                            userRole = await _roleManager.FindByNameAsync(userDTO.Role);
+                        }
+                        else return BadRequest(roleResult.Errors);
+                    }
+
                     await _userManager.AddToRoleAsync(user, userDTO.Role);
                     return Ok(result.Succeeded);
                 }
@@ -57,9 +73,31 @@ namespace Theater.Controllers
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
-                }                
+                }
             }
             return BadRequest(ModelState);
-        }        
+        }
+
+        [HttpGet("{email}")]
+        public async Task<IActionResult> Get(string email)
+        {
+            _logger.LogInformation($"Get user by email: {email} (for admins)");
+            return Ok(await _userManager.FindByEmailAsync(email));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            _logger.LogInformation($"Delete user by email: {id} (for admins)");
+            if (ModelState.IsValid)
+            {
+                if (id != null)
+                {
+                    var user = await _userManager.FindByIdAsync(id);
+                    await _userManager.DeleteAsync(user);
+                }
+            }
+            return BadRequest();
+        }
     }
 }

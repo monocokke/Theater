@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Theater.Domain.Core.Models
+namespace Theater.Domain.Core.Entities
 {
     public class Role
     {
@@ -12,6 +12,7 @@ namespace Theater.Domain.Core.Models
         public string HairColor { get; set; }
         public string Nationality { get; set; }
         public int? Height { get; set; }
+        public string Description { get; set; }
 
         public int? PerformanceId { get; set; }
         public Performance Performance { get; set; }

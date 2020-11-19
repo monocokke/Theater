@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 
-namespace Theater.Domain.Core.Models
+namespace Theater.Domain.Core.Entities
 {
     public class User : IdentityUser
     {
