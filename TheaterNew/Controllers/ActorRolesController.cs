@@ -7,6 +7,7 @@ using Theater.Domain.Core.DTO;
 using Theater.Domain.Core.Entities;
 using Theater.Services.Interfaces;
 using Theater.Domain.Core.Models.ActorRole;
+using System.Threading.Tasks;
 
 namespace Theater.Controllers
 {
@@ -14,11 +15,11 @@ namespace Theater.Controllers
     [ApiController]
     public class ActorRolesController : ControllerBase
     {
-        private readonly IService<ActorRoleDTO> _service;
+        private readonly IBaseService<ActorRoleDTO> _service;
         private readonly ILogger<ActorRolesController> _logger;
         private readonly IMapper _mapper;
 
-        public ActorRolesController(IService<ActorRoleDTO> service, ILogger<ActorRolesController> logger, IMapper mapper)
+        public ActorRolesController(IBaseService<ActorRoleDTO> service, ILogger<ActorRolesController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
@@ -26,50 +27,64 @@ namespace Theater.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync()
         {
-            _logger.LogInformation("Get all actors and their roles");
-            return Ok(_service.GetItems());
+            _logger.LogInformation("Get all actors roles");
+            IEnumerable<ActorRoleDTO> performances = await _service.GetAllAsync();
+            if (performances == null)
+                return NoContent();
+            return Ok(performances);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CreateActorRoleModel model)
+        public async Task<IActionResult> PostAsync([FromBody] CreateActorRoleModel model)
         {
-            _logger.LogInformation($"Create actor's role");
+            _logger.LogInformation($"Create actor role");
             if (ModelState.IsValid)
             {
-                if (_service.CreateItem(_mapper.Map<ActorRoleDTO>(model)))
+                if (await _service.CreateAsync(_mapper.Map<ActorRoleDTO>(model)))
                     return Ok();
             }
-            return BadRequest();
+            return BadRequest(ModelState);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            _logger.LogInformation($"Get actor's role by id: {id}");
-            return Ok(_service.GetItem(id));
+            _logger.LogInformation($"Get actor role by id: {id}");
+            if (id <= 0)
+                return BadRequest();
+            ActorRoleDTO actorRole = await _service.GetByIdAsync(id);
+            if (actorRole == null)
+                return NoContent();
+            return Ok(actorRole);
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] UpdateActorRoleModel model)
+        public async Task<IActionResult> UpdateAsync([FromBody] UpdateActorRoleModel model)
         {
-            _logger.LogInformation($"Update {model.Id} actor's role");
+            _logger.LogInformation($"Update {model.Id} actor role");
             if (ModelState.IsValid)
             {
-                if (_service.Update(_mapper.Map<ActorRoleDTO>(model)))
+                if (await _service.UpdateAsync(_mapper.Map<ActorRoleDTO>(model)))
                     return Ok();
+                return BadRequest();
             }
-            return BadRequest();
+            return BadRequest(ModelState);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            _logger.LogInformation($"Delete {id} actor's role");
-            if (_service.Delete(id))
-                return Ok();
+            _logger.LogInformation($"Delete {id} actor role");
+            if (id > 0)
+            {
+                if (await _service.DeleteAsync(id))
+                    return Ok();
+                return NoContent();
+            }
             return BadRequest();
         }
     }
 }
+

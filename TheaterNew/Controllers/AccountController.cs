@@ -44,7 +44,7 @@ namespace Theater.Controllers
 
         [Route("/login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] RegisterUserModel model)
+        public async Task<IActionResult> Login([FromBody] LoginUserModel model)
         {
             _logger.LogInformation("Attempt to login");
             if (ModelState.IsValid && await _service.Login(_mapper.Map<UserDTO>(model)))

@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theater.Infrastructure.Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Theater.Services.Interfaces", "Theater.Services.Interfaces\Theater.Services.Interfaces.csproj", "{EC328A6C-008E-494B-8DCB-914D1365B8E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D1D36DCE-85E7-40EE-BE95-3EABFED73F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theater.Infrastructure.Business.UnitTests", "Theater.Infrastructure.Business.UnitTests\Theater.Infrastructure.Business.UnitTests.csproj", "{99E88C68-B3C3-48BD-AFF7-0960A358656F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{EC328A6C-008E-494B-8DCB-914D1365B8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC328A6C-008E-494B-8DCB-914D1365B8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC328A6C-008E-494B-8DCB-914D1365B8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E88C68-B3C3-48BD-AFF7-0960A358656F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E88C68-B3C3-48BD-AFF7-0960A358656F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E88C68-B3C3-48BD-AFF7-0960A358656F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E88C68-B3C3-48BD-AFF7-0960A358656F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +69,8 @@ Global
 		{9DDB338E-8741-4803-BFBC-7ACC5F8BED24} = {A4B911F7-3566-4554-89C8-2F0533D33371}
 		{0EE4C97B-2385-4D64-92EE-5C0CFFE975DD} = {A4B911F7-3566-4554-89C8-2F0533D33371}
 		{EC328A6C-008E-494B-8DCB-914D1365B8E1} = {396FE0CD-E479-4682-99A0-3E1A7105C868}
+		{D1D36DCE-85E7-40EE-BE95-3EABFED73F25} = {A4B911F7-3566-4554-89C8-2F0533D33371}
+		{99E88C68-B3C3-48BD-AFF7-0960A358656F} = {D1D36DCE-85E7-40EE-BE95-3EABFED73F25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B1F82D5-C2EC-46F9-A3F6-388AD83DB64C}

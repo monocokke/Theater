@@ -71,9 +71,16 @@ namespace Theater.Mappings
             #region User
 
             CreateMap<RegisterUserModel, UserDTO>();
+            CreateMap<LoginUserModel, UserDTO>();
 
             #endregion
 
+            #region IdentityUser
+
+            CreateMap<User, UserDTO>();
+            CreateMap<UserDTO, User>();
+
+            #endregion
         }
     }
 }
