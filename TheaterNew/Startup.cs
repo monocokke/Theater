@@ -50,19 +50,20 @@ namespace TheaterNew
             }).AddEntityFrameworkStores<TheaterContext>();
 
             services.AddControllers();
-
-            services.AddTransient<IRepository<Actor>, ActorRepository>();
-            services.AddTransient<IRepository<ActorRole>, ActorRoleRepository>();
-            services.AddTransient<IRepository<Performance>, PerformanceRepository>();
-            services.AddTransient<IRepository<Poster>, PosterRepository>();
-            services.AddTransient<IRepository<Role>, RolesRepository>();
-
+                        
+            services.AddScoped<DbContext, TheaterContext>();
+            services.AddScoped<IBaseRepository<Performance>, BaseRepository<Performance>>();
+            services.AddScoped<IBaseRepository<Actor>, BaseRepository<Actor>>();
+            services.AddScoped<IBaseRepository<ActorRole>, BaseRepository<ActorRole>>();
+            services.AddScoped<IBaseRepository<Poster>, BaseRepository<Poster>>();
+            services.AddScoped<IBaseRepository<Role>, BaseRepository<Role>>();
+            
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IService<ActorDTO>, ActorService>();
-            services.AddTransient<IService<ActorRoleDTO>, ActorRoleService>();
-            services.AddTransient<IService<PerformanceDTO>, PerformanceService>();
-            services.AddTransient<IService<PosterDTO>, PosterService>();
-            services.AddTransient<IService<RoleDTO>, RoleService>();
+            services.AddTransient<IBaseService<ActorDTO>, ActorService>();
+            services.AddTransient<IBaseService<ActorRoleDTO>, ActorRoleService>();
+            services.AddTransient<IBaseService<PerformanceDTO>, PerformanceService>();
+            services.AddTransient<IBaseService<PosterDTO>, PosterService>();
+            services.AddTransient<IBaseService<RoleDTO>, RoleService>();
 
             var mapperConfig = new MapperConfiguration(mc =>
             {

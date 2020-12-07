@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Theater.Domain.Core.DTO
+﻿namespace Theater.Domain.Core.DTO
 {
     public class ActorDTO
     {
