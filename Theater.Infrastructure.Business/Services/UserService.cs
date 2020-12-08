@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Theater.Domain.Core.DTO;
 using Theater.Domain.Core.Entities;
@@ -11,11 +12,13 @@ namespace Theater.Infrastructure.Business.Services
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IMapper _mapper;
 
-        public UserService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager) {
+        public UserService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, IMapper mapper) {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _mapper = mapper;
         }
 
         public async Task<bool> Register(UserDTO userDTO)
@@ -24,13 +27,7 @@ namespace Theater.Infrastructure.Business.Services
 
             if (user == null)
             {
-                user = new User
-                {
-                    Email = userDTO.Email,
-                    UserName = userDTO.Username,
-                    BirthDate = userDTO.BirthDate,
-                    Sex = userDTO.Sex
-                };
+                user = _mapper.Map<User>(userDTO);
 
                 var registerResult = await _userManager.CreateAsync(user, userDTO.Password);
 

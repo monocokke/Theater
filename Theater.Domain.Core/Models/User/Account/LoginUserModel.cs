@@ -2,7 +2,7 @@
 
 namespace Theater.Domain.Core.Models.User.Account
 {
-    class LoginUserModel
+    public class LoginUserModel
     {
         [Required]
         [StringLength(256)]

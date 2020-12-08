@@ -7,6 +7,7 @@ using Theater.Services.Interfaces;
 using System.Collections.Generic;
 using Theater.Domain.Core.DTO;
 using Theater.Domain.Core.Models.Poster;
+using System.Threading.Tasks;
 
 namespace Theater.Controllers
 {
@@ -14,11 +15,11 @@ namespace Theater.Controllers
     [ApiController]
     public class PostersController : ControllerBase
     {
-        private readonly IService<PosterDTO> _service;
+        private readonly IBaseService<PosterDTO> _service;
         private readonly ILogger<PostersController> _logger;
         private readonly IMapper _mapper;
 
-        public PostersController(IService<PosterDTO> service, ILogger<PostersController> logger, IMapper mapper)
+        public PostersController(IBaseService<PosterDTO> service, ILogger<PostersController> logger, IMapper mapper)
         {
             _service = service;
             _logger = logger;
@@ -26,51 +27,63 @@ namespace Theater.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync()
         {
             _logger.LogInformation("Get all posters");
-            return Ok(_service.GetItems());
+            IEnumerable<PosterDTO> performances = await _service.GetAllAsync();
+            if (performances == null)
+                return NoContent();
+            return Ok(performances);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CreatePosterModel model)
+        public async Task<IActionResult> PostAsync([FromBody] CreatePosterModel model)
         {
-            _logger.LogInformation($"Get poster: {HttpContext.Request.Query}");
+            _logger.LogInformation($"Create poster");
             if (ModelState.IsValid)
             {
-                if (_service.CreateItem(_mapper.Map<PosterDTO>(model)))
+                if (await _service.CreateAsync(_mapper.Map<PosterDTO>(model)))
                     return Ok();
             }
-            return BadRequest();
+            return BadRequest(ModelState);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
             _logger.LogInformation($"Get poster by id: {id}");
-            return Ok(_service.GetItem(id));
+            if (id <= 0)
+                return BadRequest();
+            PosterDTO poster = await _service.GetByIdAsync(id);
+            if (poster == null)
+                return NoContent();
+            return Ok(poster);
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] UpdatePosterModel model)
+        public async Task<IActionResult> UpdateAsync([FromBody] UpdatePosterModel model)
         {
             _logger.LogInformation($"Update {model.Id} poster");
             if (ModelState.IsValid)
             {
-                if (_service.Update(_mapper.Map<PosterDTO>(model)))
+                if (await _service.UpdateAsync(_mapper.Map<PosterDTO>(model)))
                     return Ok();
+                return BadRequest();
             }
-            return BadRequest();
+            return BadRequest(ModelState);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             _logger.LogInformation($"Delete {id} poster");
-            if (_service.Delete(id))
-                return Ok();
+            if (id > 0)
+            {
+                if (await _service.DeleteAsync(id))
+                    return Ok();
+                return NoContent();
+            }
             return BadRequest();
         }
     }
 }
-

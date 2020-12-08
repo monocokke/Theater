@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Moq" Version="4.15.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Theater.Domain.Core\Theater.Domain.Core.csproj" />
+    <ProjectReference Include="..\Theater.Infrastructure.Business\Theater.Infrastructure.Business.csproj" />
+    <ProjectReference Include="..\Theater.Infrastructure.Data\Theater.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Theater.Services.Interfaces\Theater.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\TheaterNew\Theater.csproj" />
+  </ItemGroup>
+
+</Project>
